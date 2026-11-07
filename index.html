@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- 所有可编辑文案都在 config.js → labels / 站点信息，本文件只负责结构 -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html"></a>
+      <nav class="nav">
+        <a href="index.html" class="active" data-label="navHome"></a>
+        <a href="#posts" data-label="navPosts"></a>
+        <a href="#about" data-label="navAbout"></a>
+      </nav>
+      <button id="themeToggle" class="theme-toggle"></button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero（内容由 config.js 配置） -->
+    <section class="hero">
+      <div class="container">
+        <h1 id="heroTitle"></h1>
+        <p class="hero-sub" id="heroSub"></p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#posts" data-label="heroPrimary"></a>
+          <a class="btn ghost" href="#about" data-label="heroSecondary"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured（标题摘要自动读取置顶文章的 md 文件） -->
+    <section class="featured container">
+      <div class="featured-card">
+        <div class="featured-text">
+          <span class="tag" data-label="featuredTag"></span>
+          <h2 id="featuredTitle"><a href="#" data-label="loading"></a></h2>
+          <p id="featuredExcerpt"></p>
+          <div class="meta" id="featuredMeta"></div>
+        </div>
+        <div class="featured-cover cover-1" id="featuredCover"></div>
+      </div>
+    </section>
+
+    <!-- Posts -->
+    <section id="posts" class="posts container">
+      <div class="section-head">
+        <h2 data-label="postsTitle"></h2>
+        <input id="searchInput" type="search" data-placeholder="searchPlaceholder" />
+      </div>
+      <div id="postGrid" class="post-grid"></div>
+      <p id="emptyTip" class="empty-tip" hidden data-label="emptyTip"></p>
+    </section>
+
+    <!-- About（内容由 config.js 配置） -->
+    <section id="about" class="about container">
+      <h2 id="aboutTitle"></h2>
+      <p id="aboutText"></p>
+      <div class="about-links" id="aboutLinks"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p id="footerText"></p>
+    </div>
+  </footer>
+
+  <script src="config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
