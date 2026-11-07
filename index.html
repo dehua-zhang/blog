@@ -6,7 +6,8 @@
   <title></title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
+  <!-- 本地资源带时间戳，避免浏览器缓存旧版，改完文件普通刷新即可生效 -->
+  <script>document.write('<link rel="stylesheet" href="css/style.css?v=' + Date.now() + '">')</script>
 </head>
 <body>
   <!-- 所有可编辑文案都在 config.js → labels / 站点信息，本文件只负责结构 -->
@@ -72,7 +73,7 @@
     </div>
   </footer>
 
-  <script src="config.js"></script>
-  <script src="js/main.js"></script>
+  <script>document.write('<script src="config.js?v=' + Date.now() + '"><\/script>')</script>
+  <script>document.write('<script src="js/main.js?v=' + Date.now() + '"><\/script>')</script>
 </body>
 </html>
