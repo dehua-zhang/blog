@@ -109,6 +109,7 @@ const SITE = {
     loadFailTip: "文章加载失败：",
     serverTip: "提示：请通过本地服务器访问（如 npx serve .），直接双击打开 HTML 会因浏览器安全策略无法读取 Markdown。",
     postServerTip: "提示：请通过本地服务器访问（如 npx serve .）。",
+    httpFailTip: "提示：线上未找到该文章文件（404）。请确认 posts/ 目录已随仓库一起推送；若使用 GitHub Pages，仓库根目录必须有 .nojekyll 文件，否则带 front-matter 的 .md 会被 Jekyll 转换而无法读取。",
     postFailTitle: "文章加载失败",
     featuredFail: "置顶文章加载失败",
   },

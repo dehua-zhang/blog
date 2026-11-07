@@ -23,10 +23,24 @@ python -m http.server 8080
 
 然后访问 http://localhost:8080。
 
+## 部署到 GitHub Pages（重要）
+
+本项目的文章是浏览器运行时直接 `fetch` 读取的 `posts/*.md` 原文件，而 **GitHub Pages 默认会用 Jekyll 构建**，带 `---` front-matter 的 `.md` 会被 Jekyll 转换成 HTML，导致 `posts/xxx.md` 返回 404、文章加载失败。
+
+项目根目录已包含空的 **`.nojekyll`** 文件，作用就是让 GitHub Pages 跳过 Jekyll、原样发布所有文件。**推送时务必把这个文件一起提交**（它是点开头的隐藏文件，网页拖拽上传时容易漏掉）。
+
+排查线上 404 的顺序：
+
+1. 打开 `https://你的用户名.github.io/posts/markdown-tips.md`，能直接看到 Markdown 原文即正常
+2. 若 404：确认仓库根目录存在 `.nojekyll`，且 `posts/` 目录里的文件都已推送
+3. 推送后等待 1~2 分钟重新部署，再 `Ctrl+F5` 强制刷新
+4. 用子路径部署（`用户名.github.io/仓库名/`）无需改代码，所有资源都是相对路径
+
 ## 目录结构
 
 ```
 blog/
+├── .nojekyll           # GitHub Pages 专用：跳过 Jekyll，原样发布 .md 文件
 ├── config.js           # ★ 唯一需要编辑的文件：站点内容 + 文章清单 + 界面文案
 ├── index.html          # 首页（纯结构，文案全部由 config.js 填充）
 ├── post.html           # 文章详情页（?post=slug 加载对应 md）

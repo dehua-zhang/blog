@@ -112,8 +112,10 @@ async function initIndex() {
       b.date.localeCompare(a.date)
     );
   } catch (err) {
+    // file:// 打开时是浏览器安全限制；线上 404 是文件未发布 / Jekyll 处理问题
+    const tip = location.protocol === "file:" ? label("serverTip") : label("httpFailTip");
     grid.innerHTML = `<p class="empty-tip">${label("loadFailTip")}${err.message}<br>
-      ${label("serverTip")}</p>`;
+      ${tip}</p>`;
     emptyTip.hidden = true;
     return;
   }
@@ -201,8 +203,9 @@ async function initPost() {
       });
     }
   } catch (err) {
+    const tip = location.protocol === "file:" ? label("postServerTip") : label("httpFailTip");
     titleEl.textContent = label("postFailTitle");
-    bodyEl.innerHTML = `<p>${err.message}<br>${label("postServerTip")}</p>`;
+    bodyEl.innerHTML = `<p>${err.message}<br>${tip}</p>`;
   }
 }
 
